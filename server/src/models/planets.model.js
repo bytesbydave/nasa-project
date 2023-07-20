@@ -55,7 +55,15 @@ async function savePlanet(planet) {
 }
 
 async function getAllPlanets() {
-  return await planets.find({});
+  // find allows to search for specific values
+  return await planets.find(
+    {},
+    {
+      _id: 0,
+      __v: 0,
+    }
+  );
+  // return await planets.find({});
 }
 
 module.exports = {
