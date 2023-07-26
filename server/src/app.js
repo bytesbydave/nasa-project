@@ -59,6 +59,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 function checkLoggedIn(req, res, next) {
+  // LOOK INTO REFRESH TOKENS AND ROLE-BASED ACCESS CONTROL
   console.log('User is: ', req.user);
   const isLoggedIn = req.isAuthenticated() && req.user;
   if (!isLoggedIn) {
@@ -74,7 +75,7 @@ app.use(
     origin: 'http://localhost:3000',
   })
 );
-// app.use(morgan('combined'));
+// app.use(morgan('combined')); // For Logging
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -96,7 +97,10 @@ app.get(
     console.log('Google Called us back');
   }
 );
-app.get('/auth/loggout', (req, res) => {});
+app.get('/auth/logout', (req, res) => {
+  req.logout(); // Removes req.user and clears any logged in session
+  return res.redirect('/');
+});
 
 app.use('/v1', api);
 

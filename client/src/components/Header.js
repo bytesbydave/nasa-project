@@ -105,7 +105,7 @@ const Header = (props) => {
           </Clickable>
           <a href='/secret'>Show Secret</a>
           <a href='/auth/google'>Google Loggin</a>
-          <a href='/auth/loggout'>Sign Out</a>
+          <a href='/auth/logout'>Sign Out</a>
         </nav>
       </Centered>
     </ArwesHeader>
