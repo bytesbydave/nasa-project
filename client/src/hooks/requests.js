@@ -1,4 +1,6 @@
-const API_URL = 'https://localhost:8000/v1';
+console.log(process.env.NODE_ENV);
+const API_URL =
+  process.env.NODE_ENV === 'production' ? 'v1' : 'https://localhost:8000/v1';
 
 // Load planets and return as JSON.
 async function httpGetPlanets() {
